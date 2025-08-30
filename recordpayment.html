@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Record Payment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8">
+
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Record Payment</h1>
+
+    <form class="space-y-6">
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Client Name</label>
+        <input type="text" placeholder="Enter client name" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Payment Amount</label>
+          <input type="number" placeholder="₹ Amount" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Date</label>
+          <input type="date" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Payment Mode</label>
+        <select class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+          <option>Cash</option>
+          <option>Bank Transfer</option>
+          <option>UPI</option>
+          <option>Cheque</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Details</label>
+        <textarea placeholder="Any remarks..." rows="3" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400"></textarea>
+      </div>
+
+      <div class="flex justify-center">
+        <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded shadow hover:bg-green-700 transition">Save Payment</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
