@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Client</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-8">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Add New Client</h1>
+
+    <form class="space-y-6">
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Full Name</label>
+          <input type="text" placeholder="Enter client's name" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" placeholder="Enter client's email" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+          <input type="text" placeholder="+91 98765 43210" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Address</label>
+          <input type="text" placeholder="Client's address" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Loan Amount</label>
+          <input type="number" placeholder="₹ Amount" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
+          <input type="number" placeholder="e.g. 10" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Duration</label>
+          <input type="text" placeholder="e.g. 12 months" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Collateral Details</label>
+        <textarea placeholder="Enter details of collateral (if any)" rows="3" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400"></textarea>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Additional Notes</label>
+        <textarea placeholder="Any other details..." rows="3" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400"></textarea>
+      </div>
+
+      <div class="flex justify-center">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 transition">Add Client</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
