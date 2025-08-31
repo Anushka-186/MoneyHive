@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Total Clients</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-6">
+
+  <!-- All Clients Section -->
+  <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 mb-10">
+    <h2 class="text-2xl font-bold mb-4 text-blue-900">All Clients</h2>
+    <p class="text-gray-500 mb-4">Search for a client to see their details.</p>
+    
+    <!-- Search -->
+    <input 
+      type="text" 
+      placeholder="Search by name..." 
+      class="w-full border border-gray-300 rounded-lg p-2 mb-4"
+    />
+
+    <!-- Client List -->
+    <ul class="divide-y divide-gray-200">
+      <li class="p-4 cursor-pointer hover:bg-gray-100 rounded">
+        <p class="font-semibold">Anushka</p>
+        <p class="text-sm text-gray-600">78XXXXXX32</p>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- Client Details + Transaction History -->
+  <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+    <button class="mb-4 text-gray-900 font-medium flex items-center">
+      ← Back to Clients
+    </button>
+
+    <!-- ClientS -->
+    <h2 class="text-2xl font-bold mb-2 text-blue-900">Details for Anushka</h2>
+    <p class="text-gray-600 mb-6">View contact details and transaction history.</p>
+
+    <div class="bg-gray-50 p-4 rounded-lg mb-6">
+      <p class="font-semibold">Anushka</p>
+      <p>78XXXXXX32</p>
+      <p>1276, sector ABC, panchkula</p>
+    </div>
+
+    <!-- Transaction -->
+    <h3 class="text-xl font-semibold mb-4 text-blue-900">Transaction History</h3>
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="border-b text-gray-600">
+          <th class="p-2">Due Date</th>
+          <th class="p-2">Principal</th>
+          <th class="p-2">Interest</th>
+          <th class="p-2">Remaining</th>
+          <th class="p-2">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="p-2">September 30, 2025</td>
+          <td class="p-2">₹10,000</td>
+          <td class="p-2">₹83</td>
+          <td class="p-2">₹10,083</td>
+          <td class="p-2">
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
+              pending
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
