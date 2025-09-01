@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoneyHive - Reviews</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-100 text-gray-800 flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8 shadow-md">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-4xl font-extrabold tracking-wide">💬 MoneyHive Reviews</h1>
+      <p class="mt-2 text-blue-100 text-lg">Your voice matters – share your experience with us</p>
+    </div>
+  </header>
+
+  <!-- Review Form -->
+  <section class="max-w-3xl mx-auto px-6 py-12 w-full">
+    <h2 class="text-2xl font-semibold text-center mb-8 text-blue-700">Leave a Review</h2>
+
+    <form class="bg-white p-8 rounded-2xl shadow-lg space-y-5">
+      <!-- Name -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Your Name</label>
+        <input type="text" placeholder="Enter your name"
+          class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+      </div>
+
+      <!-- Rating -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Rating</label>
+        <select
+          class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          <option>⭐⭐⭐⭐⭐ Excellent</option>
+          <option>⭐⭐⭐⭐ Good</option>
+          <option>⭐⭐⭐ Average</option>
+          <option>⭐⭐ Poor</option>
+          <option>⭐ Very Bad</option>
+        </select>
+      </div>
+
+      <!-- Review -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Your Review</label>
+        <textarea placeholder="Write your review..." rows="4"
+          class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit"
+        class="w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
+        🚀 Submit Review
+      </button>
+    </form>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="max-w-6xl mx-auto px-6 pb-12 w-full">
+    <h2 class="text-2xl font-semibold text-center mb-10 text-blue-700">What People Say</h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Review Card 1 -->
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition">
+        <h3 class="font-semibold text-gray-800 text-lg mb-1">Ankush</h3>
+        <p class="text-yellow-500 text-sm mb-3">⭐⭐⭐⭐⭐</p>
+        <p class="text-gray-600 italic">"MoneyHive made lending so easy and transparent. Highly recommend it!"</p>
+      </div>
+
+      <!-- Review Card 2 -->
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition">
+        <h3 class="font-semibold text-gray-800 text-lg mb-1">Rohan</h3>
+        <p class="text-yellow-500 text-sm mb-3">⭐⭐⭐⭐</p>
+        <p class="text-gray-600 italic">"The platform is simple and effective. My transactions were smooth."</p>
+      </div>
+
+      <!-- Review Card 3 -->
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition">
+        <h3 class="font-semibold text-gray-800 text-lg mb-1">Bhavna</h3>
+        <p class="text-yellow-500 text-sm mb-3">⭐⭐⭐⭐⭐</p>
+        <p class="text-gray-600 italic">"Great UI, secure, and easy to use. A reliable platform for lending."</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 text-center py-5 mt-auto">
+    <p>&copy; 2025 MoneyHive. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
