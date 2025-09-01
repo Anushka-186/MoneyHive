@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Loan Transaction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="w-full max-w-md bg-white shadow-lg rounded-xl p-6">
+    <h2 class="text-xl font-semibold text-blue-900">New Loan Transaction</h2>
+    <p class="text-sm text-gray-500 mb-4">Fill in the details for the new loan.</p>
+    <form action="#" method="POST" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Client</label>
+        <select class="w-full mt-1 px-3 py-2 border rounded-lg focus:ring-blue-500 focus:outline-none">
+          <option>Select a client</option>
+          <option>Client A</option>
+          <option>Client B</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Principal Amount</label>
+        <input type="number" placeholder="" required
+          class="w-full mt-1 px-3 py-2 border rounded-lg focus:ring-blue-500 focus:outline-none" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Interest Type</label>
+        <div class="flex items-center gap-4 mt-1">
+          <label class="flex items-center gap-1">
+            <input type="radio" name="interest" checked />
+            <span>Amount</span>
+          </label>
+          <label class="flex items-center gap-1">
+            <input type="radio" name="interest" />
+            <span>Rate (%)</span>
+          </label>
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Interest Amount</label>
+        <input type="number" placeholder="" required
+          class="w-full mt-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Due Date</label>
+        <input type="date" required
+          class="w-full mt-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+      </div>
+      <button type="submit"
+        class="w-full bg-blue-900 text-white font-semibold py-2 rounded-lg hover:bg-blue-900 transition">
+        Save Transaction
+      </button>
+
+    </form>
+  </div>
+
+</body>
+</html>
