@@ -6,35 +6,27 @@
   <title>MoneyHive - Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="h-screen flex items-center justify-center">
+<body class="h-screen flex items-center justify-center bg-gray-100">
   <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
     <h1 class="text-3xl font-bold text-center text-blue-900 mb-6">Welcome to MoneyHive</h1>
+
     <nav class="flex gap-6 mb-6 font-semibold text-gray-600 border-b">
       <a href="Login.html" class="pb-2 border-b-2 border-blue-500 text-blue-500">Login</a>
       <a href="createAccount.html" class="pb-2 hover:text-blue-900">Create Account</a>
     </nav>
-    <form class="space-y-4">
-      <div>
-        <input type="text" placeholder="Email or Mobile" 
-          class="w-full px-4 py-3 border rounded-lg focus:ring-blue-400 focus:outline-none" required>
-      </div>
-      <div>
-        <input type="password" placeholder="Password" 
-          class="w-full px-4 py-3 border rounded-lg  focus:ring-blue-400 focus:outline-none" required>
-      </div>
-      <div class="text-right text-sm">
-        <a href="#" class="text-blue-600 hover:underline">Forgot Password?</a>
-      </div>
-      <button type="submit" 
-        class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-900 transition"  onclick="location.href='Dashboard.html'">
+
+    <form id="loginForm" class="space-y-4">
+      <input id="email" type="text" placeholder="Email" class="w-full px-4 py-3 border rounded-lg" required>
+      <input id="password" type="password" placeholder="Password" class="w-full px-4 py-3 border rounded-lg" required>
+      <p id="message" class="text-center font-semibold"></p>
+
+      <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-900 transition">
         Login
-      </button>
-      <button type="button" 
-        class="w-full py-3 border border-blue-900 text-blue-900 rounded-lg font-medium hover:bg-blue-50 transition">
-        Login with OTP
       </button>
     </form>
   </div>
 
+  <!-- Link JS -->
+  <script src="login.js"></script>
 </body>
 </html>
