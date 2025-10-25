@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Transactions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="w-full max-w-3xl bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-2xl font-semibold text-blue-900 mb-4">All Loan Transactions</h2>
+
+    <table class="w-full border border-gray-300 text-left">
+      <thead class="bg-blue-900 text-white">
+        <tr>
+          <th class="py-2 px-3">Client</th>
+          <th class="py-2 px-3">Principal</th>
+          <th class="py-2 px-3">Interest</th>
+          <th class="py-2 px-3">Total</th>
+          <th class="py-2 px-3">Due Date</th>
+        </tr>
+      </thead>
+      <tbody id="transactionsTable"></tbody>
+    </table>
+
+    <button id="clearData"
+      class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
+      Clear All Transactions
+    </button>
+  </div>
+
+  <script>
+    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    const tableBody = document.getElementById("transactionsTable");
+
+    if (transactions.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-gray-500">No transactions found.</td></tr>`;
+    } else {
+      transactions.forEach(t => {
+        const row = `<tr class="border-t">
+          <td class="py-2 px-3">${t.client}</td>
+          <td class="py-2 px-3">₹${t.principal.toFixed(2)}</td>
+          <td class="py-2 px-3">${t.interestType === "rate" ? t.interestValue + "%" : "₹" + t.interestValue}</td>
+          <td class="py-2 px-3">₹${t.totalPayable.toFixed(2)}</td>
+          <td class="py-2 px-3">${t.dueDate}</td>
+        </tr>`;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    document.getElementById("clearData").addEventListener("click", () => {
+      localStorage.removeItem("transactions");
+      alert("All transactions cleared!");
+      location.reload();
+    });
+  </script>
+</body>
+</html>
