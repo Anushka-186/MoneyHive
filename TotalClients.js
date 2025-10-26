@@ -87,7 +87,18 @@ let defaultClients = [
 ];
 
 // Load from localStorage if available, else use default data
-let clients = JSON.parse(localStorage.getItem("clients")) || defaultClients;
+// Load clients from localStorage and merge with defaults
+const savedClients = JSON.parse(localStorage.getItem("clients")) || [];
+
+// Merge saved clients with defaults (avoid duplicates by name)
+let clients = [
+  ...defaultClients.filter(def => !savedClients.some(s => s.name === def.name)),
+  ...savedClients
+];
+
+// Save merged data back (to ensure persistence)
+localStorage.setItem("clients", JSON.stringify(clients));
+
 
 // --- DOM Elements ---
 const clientList = document.getElementById("clientList");
