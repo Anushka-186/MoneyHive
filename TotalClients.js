@@ -1,6 +1,4 @@
-// ===== MoneyHive - All Clients Logic with LocalStorage + Card Design =====
-
-// Default client dataset (used only if no data exists in localStorage)
+// --- Default Client Data ---
 let defaultClients = [
   {
     name: "Anushka",
