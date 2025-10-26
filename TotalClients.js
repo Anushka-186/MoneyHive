@@ -1,5 +1,7 @@
-// --- Default Client Data ---
-let defaultClients = [
+// ===== MoneyHive - All Clients (Permanent Defaults + Persistent New Clients) =====
+
+// --- Default Client Data (Always Permanent) ---
+const defaultClients = [
   {
     name: "Anushka",
     phone: "78XXXXXX32",
@@ -86,19 +88,11 @@ let defaultClients = [
   }
 ];
 
-// Load from localStorage if available, else use default data
-// Load clients from localStorage and merge with defaults
-const savedClients = JSON.parse(localStorage.getItem("clients")) || [];
+// --- Custom clients (saved in localStorage) ---
+let customClients = JSON.parse(localStorage.getItem("customClients")) || [];
 
-// Merge saved clients with defaults (avoid duplicates by name)
-let clients = [
-  ...defaultClients.filter(def => !savedClients.some(s => s.name === def.name)),
-  ...savedClients
-];
-
-// Save merged data back (to ensure persistence)
-localStorage.setItem("clients", JSON.stringify(clients));
-
+// --- Combined client list (default + saved) ---
+let clients = [...defaultClients, ...customClients];
 
 // --- DOM Elements ---
 const clientList = document.getElementById("clientList");
@@ -112,9 +106,9 @@ const clientAddress = document.getElementById("clientAddress");
 const transactionTable = document.getElementById("transactionTable");
 const backBtn = document.getElementById("backBtn");
 
-// --- Save to localStorage ---
-function saveClients() {
-  localStorage.setItem("clients", JSON.stringify(clients));
+// --- Save custom clients only ---
+function saveCustomClients() {
+  localStorage.setItem("customClients", JSON.stringify(customClients));
 }
 
 // --- Display all clients as animated cards ---
@@ -204,25 +198,35 @@ searchInput.addEventListener("input", e => {
   displayClients(filtered);
 });
 
-// --- Add new client ---
+// --- Add new client (saved separately) ---
 function addClient(name, phone, address) {
-  const exists = clients.some(c => c.name.toLowerCase() === name.toLowerCase());
+  // prevent duplicate names in default or custom
+  const exists =
+    defaultClients.some(c => c.name.toLowerCase() === name.toLowerCase()) ||
+    customClients.some(c => c.name.toLowerCase() === name.toLowerCase());
   if (exists) {
     alert("Client with this name already exists!");
     return;
   }
-  clients.push({ name, phone, address, transactions: [] });
-  saveClients();
+
+  const newClient = { name, phone, address, transactions: [] };
+  customClients.push(newClient);
+  saveCustomClients();
+
+  clients = [...defaultClients, ...customClients];
   displayClients(clients);
 }
 
 // --- Add transaction ---
 function addTransaction(name, principal, interest, dueDate, status) {
-  const client = clients.find(c => c.name === name);
+  const client =
+    customClients.find(c => c.name === name) ||
+    defaultClients.find(c => c.name === name);
+
   if (client) {
     client.transactions.push({ principal, interest, dueDate, status });
-    saveClients();
-    displayClients(clients);
+    if (customClients.includes(client)) saveCustomClients();
+    displayClients([...defaultClients, ...customClients]);
   } else {
     alert("Client not found!");
   }
