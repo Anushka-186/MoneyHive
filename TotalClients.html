@@ -1,78 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Total Clients</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyHive - All Clients</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth fade-in animation for client cards */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card hover animation */
+    .hover-animate:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Smooth transitions for showing/hiding sections */
+    .hidden-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease-in-out;
+    }
+    .visible-section {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body class="bg-gray-50 p-6">
+
+<body class="bg-gradient-to-br from-blue-50 to-amber-50 min-h-screen font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-blue-900 text-white py-4 shadow-md">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6">
+      <h1 class="text-2xl font-bold tracking-wide">💸 MoneyHive</h1>
+      <nav class="space-x-6">
+        <a href="#" class="hover:text-amber-300">Home</a>
+        <a href="#" class="hover:text-amber-300">Dashboard</a>
+        <a href="#" class="hover:text-amber-300">Add Client</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- All Clients Section -->
-  <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 mb-10">
-    <h2 class="text-2xl font-bold mb-4 text-blue-900">All Clients</h2>
-    <p class="text-gray-500 mb-4">Search for a client to see their details.</p>
-    
+  <section id="clients-section" class="max-w-6xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-8 my-10 transition-all">
+    <h2 class="text-3xl font-bold mb-4 text-blue-900 flex items-center gap-2">
+      👥 All Clients
+    </h2>
+    <p class="text-gray-500 mb-4">Search and view client financial details in one place.</p>
+
     <!-- Search -->
-    <input 
-      type="text" 
-      placeholder="Search by name..." 
-      class="w-full border border-gray-300 rounded-lg p-2 mb-4"
-    />
+    <div class="relative mb-6">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="🔍 Search by name..."
+        class="w-full border border-gray-300 rounded-lg p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
 
-    <!-- Client List -->
-    <ul class="divide-y divide-gray-200">
-      <li class="p-4 cursor-pointer hover:bg-gray-100 rounded">
-        <p class="font-semibold">Anushka</p>
-        <p class="text-sm text-gray-600">78XXXXXX32</p>
-      </li>
-    </ul>
-  </div>
+    <!-- Client Cards -->
+    <div id="clientList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-in">
+      <!-- JS will populate here -->
+    </div>
+  </section>
 
-
-  <!-- Client Details + Transaction History -->
-  <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
-    <button class="mb-4 text-gray-900 font-medium flex items-center">
+  <!-- Client Details Section -->
+  <section id="details-section" class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 hidden transition-all">
+    <button id="backBtn" class="mb-6 text-blue-700 font-medium flex items-center gap-1 hover:underline">
       ← Back to Clients
     </button>
 
-    <!-- ClientS -->
-    <h2 class="text-2xl font-bold mb-2 text-blue-900">Details for Anushka</h2>
-    <p class="text-gray-600 mb-6">View contact details and transaction history.</p>
-
-    <div class="bg-gray-50 p-4 rounded-lg mb-6">
-      <p class="font-semibold">Anushka</p>
-      <p>78XXXXXX32</p>
-      <p>1276, sector ABC, panchkula</p>
+    <div class="mb-8 fade-in">
+      <h2 id="clientName" class="text-3xl font-bold text-blue-900"></h2>
+      <p id="clientPhone" class="text-gray-600"></p>
+      <p id="clientAddress" class="text-gray-500 mt-2"></p>
     </div>
 
-    <!-- Transaction -->
-    <h3 class="text-xl font-semibold mb-4 text-blue-900">Transaction History</h3>
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="border-b text-gray-600">
-          <th class="p-2">Due Date</th>
-          <th class="p-2">Principal</th>
-          <th class="p-2">Interest</th>
-          <th class="p-2">Remaining</th>
-          <th class="p-2">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="border-b">
-          <td class="p-2">September 30, 2025</td>
-          <td class="p-2">₹10,000</td>
-          <td class="p-2">₹83</td>
-          <td class="p-2">₹10,083</td>
-          <td class="p-2">
-            <span class="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
-              pending
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <h3 class="text-2xl font-semibold mb-4 text-blue-900">📜 Transaction History</h3>
+    <div class="overflow-x-auto rounded-lg border border-gray-200 fade-in">
+      <table class="w-full text-left border-collapse">
+        <thead class="bg-blue-50 text-blue-800">
+          <tr class="border-b">
+            <th class="p-3">Due Date</th>
+            <th class="p-3">Principal</th>
+            <th class="p-3">Interest</th>
+            <th class="p-3">Remaining</th>
+            <th class="p-3">Status</th>
+          </tr>
+        </thead>
+        <tbody id="transactionTable" class="divide-y divide-gray-100 bg-white"></tbody>
+      </table>
+    </div>
+  </section>
 
+  <script src="TotalClients.js"></script>
 </body>
 </html>
