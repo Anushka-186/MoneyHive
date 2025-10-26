@@ -16,7 +16,7 @@ window.onload = function () {
     // Store valid users
     const validUsers = {
       "user@example.com": "12345",
-      "charanpreet@gmail.com": "mypassword",
+      "xyz@gmail.com": "xyz",
     };
 
     // Check for valid login
