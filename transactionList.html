@@ -31,24 +31,50 @@
   </div>
 
   <script>
-    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-    const tableBody = document.getElementById("transactionsTable");
-
-    if (transactions.length === 0) {
-      tableBody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-gray-500">No transactions found.</td></tr>`;
-    } else {
-      transactions.forEach(t => {
-        const row = `<tr class="border-t">
-          <td class="py-2 px-3">${t.client}</td>
-          <td class="py-2 px-3">₹${t.principal.toFixed(2)}</td>
-          <td class="py-2 px-3">${t.interestType === "rate" ? t.interestValue + "%" : "₹" + t.interestValue}</td>
-          <td class="py-2 px-3">₹${t.totalPayable.toFixed(2)}</td>
-          <td class="py-2 px-3">${t.dueDate}</td>
-        </tr>`;
-        tableBody.innerHTML += row;
-      });
+    // SAFE LOCAL STORAGE READ
+    let transactions = [];
+    try {
+      transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    } catch (e) {
+      console.error("Corrupted localStorage. Resetting.");
+      localStorage.removeItem("transactions");
+      transactions = [];
     }
 
+    const tableBody = document.getElementById("transactionsTable");
+
+    // NO DATA
+    if (!Array.isArray(transactions) || transactions.length === 0) {
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="5" class="text-center py-4 text-gray-500">
+            No transactions found.
+          </td>
+        </tr>`;
+    } else {
+      let html = "";
+
+      transactions.forEach(t => {
+        // FIX: convert strings to numbers safely
+        const principal = Number(t.principal) || 0;
+        const total = Number(t.totalPayable) || 0;
+        const interest = t.interestType === "rate" ? `${t.interestValue}%` : `₹${t.interestValue}`;
+
+        html += `
+          <tr class="border-t">
+            <td class="py-2 px-3">${t.client}</td>
+            <td class="py-2 px-3">₹${principal.toFixed(2)}</td>
+            <td class="py-2 px-3">${interest}</td>
+            <td class="py-2 px-3">₹${total.toFixed(2)}</td>
+            <td class="py-2 px-3">${t.dueDate}</td>
+          </tr>
+        `;
+      });
+
+      tableBody.innerHTML = html;
+    }
+
+    // CLEAR DATA BUTTON
     document.getElementById("clearData").addEventListener("click", () => {
       localStorage.removeItem("transactions");
       alert("All transactions cleared!");
